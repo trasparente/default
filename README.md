@@ -7,7 +7,7 @@ Default notes
     function editor(){
       const category = document.getElementById('category');
       const date = "{{ site.time | date: '%Y-%m-%d-' }}";
-      const title = document.getElementById('title').value.toLowerCase().replace /[^a-zA-Z0-9]+/g,'-';
+      const title = document.getElementById('title').value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-');
       const tags = document.getElementById('tags').value;
       const url='{{ site.github.repository_url }}/new/main?filename=' + category + '/_posts/' + date + title + '.md&value=---%0Atags:%20[' + tags + ']%0A---%0A';
       return console.log(url);
