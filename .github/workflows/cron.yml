@@ -1,0 +1,18 @@
+name: Request Page Build
+on:
+  schedule:
+    - cron: '1 */24 * * *'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.ACTIONS }}
+          script: |
+            const build = await github.repos.requestPagesBuild({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            })
