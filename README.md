@@ -5,5 +5,5 @@ Default notes
   <summary>Add</summary>
   <input id=title placeholder="title">
   <input id=tags placeholder="tags">
-  <button onclick="console.log(getElementById('title').value())">
+  <button onclick="console.log(document.getElementById('title').value)">
 </details>
