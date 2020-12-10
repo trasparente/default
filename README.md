@@ -5,7 +5,7 @@ Default notes
   <summary>Add</summary>
   <script>
     function editor(){
-      const category = document.getElementById('category').value;
+      const category = document.getElementById('category').value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-');
       const date = "{{ site.time | date: '%Y-%m-%d-' }}";
       const title = document.getElementById('title').value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-');
       const tags = document.getElementById('tags').value;
@@ -21,6 +21,6 @@ Default notes
 </details>
 
 {% for category in site.categories %}<h3>{{ category[0] }}</h3>
-{% for post in category[1] %}- [{{ post.title }}]({{ post.url }}) {{ post.date }}
+{% for post in category[1] %}- [{{ post.title }}]({{ post.url | absolute_url }}) {{ post.date | date_to_string }}
 {% endfor %}
 {% endfor %}
