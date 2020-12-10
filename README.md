@@ -19,3 +19,9 @@ Default notes
   <input id=tags placeholder=tags>
   <button onclick="editor()">Editor</button>
 </details>
+
+{% assign categorized_posts = site.posts | group: 'category' %}
+{% for category in categorized_posts %}<h3>{{ category[0] }}</h3>
+{% for post on category[1] %}- {{ post.title }} {{ post.date }} {{ post.tags }}
+{% endfor %}
+{% endfor %}
