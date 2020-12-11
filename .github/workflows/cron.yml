@@ -23,8 +23,15 @@ jobs:
             const filtered = commits.data.filter(function(c){
               return (c.commit.message.endsWith(".md") && c.commit.message.startsWith("Create") && !c.commit.message.includes("footer"));
             });
+            for (const commit of filtered){
+              const single = await github.repos.getCommit({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: commit.sha
+              });
+              console.log(single.data.files);
+            }
             const build = await github.repos.requestPagesBuild({
               owner: context.repo.owner,
               repo: context.repo.repo
             });
-            console.log(filtered);
