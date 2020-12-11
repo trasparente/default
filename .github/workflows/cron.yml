@@ -20,8 +20,11 @@ jobs:
               repo: context.repo.repo,
               since: d.toISOString()
             });
+            const filtered = commits.data.filter(function(c){
+              return (c.commit.message.endsWith(".md") && c.commit.message.startsWith("Create"));
+            });
             const build = await github.repos.requestPagesBuild({
               owner: context.repo.owner,
               repo: context.repo.repo
             });
-            console.log(commits.data);
+            console.log(filtered);
