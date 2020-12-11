@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron '0 * * * *'
+    - cron: '0 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
