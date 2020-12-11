@@ -17,10 +17,11 @@ jobs:
             d.setDate(d.getDate()-1);
             const commits = await github.repos.listCommits({
               owner: context.repo.owner,
-              repo: context.repo.repo
+              repo: context.repo.repo,
+              since: d.toISOString()
             });
             const build = await github.repos.requestPagesBuild({
               owner: context.repo.owner,
               repo: context.repo.repo
             });
-            console.log(commits);
+            console.log(commits.data);
