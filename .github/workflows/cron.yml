@@ -1,7 +1,8 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '1 */24 * * *'
+    - cron '0 * * * *'
+    #- cron: '1 */24 * * *'
 
 jobs:
   build:
@@ -12,7 +13,14 @@ jobs:
         with:
           github-token: ${{ secrets.ACTIONS }}
           script: |
+            const d = new Date();
+            d.setDate(d.getDate()-1);
+            const commits = await github.repos.listCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
             const build = await github.repos.requestPagesBuild({
               owner: context.repo.owner,
               repo: context.repo.repo
-            })
+            });
+            console.log(commits);
