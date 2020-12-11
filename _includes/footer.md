@@ -1,0 +1,3 @@
+- [Repo]({{ site.github.repository_url }})
+- [Page]({{ site.github.repository_url }}/blob/main/{{ page.path }})
+- Updated {{ site.time | date: '%x' }} {{ site.github.build_revision }}
