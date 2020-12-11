@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '0 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -29,7 +29,12 @@ jobs:
                 repo: context.repo.repo,
                 ref: commit.sha
               });
-              console.log(single.data.files);
+              const file = await github.repos.getContent({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: single.data.files[0].filename
+              });
+              console.log(file);
             }
             const build = await github.repos.requestPagesBuild({
               owner: context.repo.owner,
