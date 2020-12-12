@@ -46,7 +46,7 @@ jobs:
                 repo: context.repo.repo,
                 path: single.data.files[0].filename
               });
-              console.log(file.data.path, atob(file.data.content);
+              console.log(file.data.path, atob(file.data.content));
               // decode content and add footer if not present
             }
 
