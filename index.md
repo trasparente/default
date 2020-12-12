@@ -19,6 +19,14 @@
   <button onclick='editor()'>Editor</button>
 </details>
 
+<div class='categories'>
+  <a href='#'>All</a> | {% for category in site.categories %}<a href='#'>{{ category[0] }}</a> {{ category[1] | size }}{% unless forloop.last %} | {% endunless %}{% endfor %}
+</div>
+
+<div class='tags'>
+  <a href='#'>All</a> | {% for tag in site.tags %}<a href='#'>{{ tag[0] }}</a> {{ tag[1] | size }}{% unless forloop.last %} | {% endunless %}{% endfor %}
+</div>
+
 {% for category in site.categories %}<div category='{{ category[0] }}'><h3>{{ category[0] }}</h3><ul>
 {% for post in category[1] %}<li tags='{{ post.tags | join: " " }}'> <a href='{{ post.url | absolute_url }}'>{{ post.title }}</a> {{ post.date | date_to_string }}</li>
 {% endfor %}</ul></div>
