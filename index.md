@@ -20,6 +20,6 @@
 </details>
 
 {% for category in site.categories %}<div category='{{ category[0] }}'><h3>{{ category[0] }}</h3><ul>
-{% for post in category[1] %}<li tags='{{ page.tags | join: " " }}' markdown='1'> [{{ post.title }}]({{ post.url | absolute_url }}) {{ post.date | date_to_string }}</li>
+{% for post in category[1] %}<li tags='{{ post.tags | join: " " }}'> <a href='{{ post.url | absolute_url }}'>{{ post.title }}</a> {{ post.date | date_to_string }}</li>
 {% endfor %}</ul></div>
 {% endfor %}
