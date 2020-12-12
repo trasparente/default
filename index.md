@@ -20,11 +20,11 @@
 </details>
 
 <div class='categories'>
-  <a href='#'>All</a> | {% for category in site.categories %}<a href='#'>{{ category[0] }}</a> {{ category[1] | size }}{% unless forloop.last %} | {% endunless %}{% endfor %}
+  <a href='#'>All</a> - {% for category in site.categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
 </div>
 
 <div class='tags'>
-  <a href='#'>All</a> | {% for tag in site.tags %}<a href='#'>{{ tag[0] }}</a> {{ tag[1] | size }}{% unless forloop.last %} | {% endunless %}{% endfor %}
+  <a href='#'>All</a> - {% for tag in site.tags %}<a href='#'>{{ tag[0] }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
 </div>
 
 {% for category in site.categories %}<div category='{{ category[0] }}'><h3>{{ category[0] }}</h3><ul>
