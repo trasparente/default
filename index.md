@@ -30,20 +30,18 @@
 <script>
   const cat_links = document.querySelectorAll('.categories a');
   const tag_links = document.querySelectorAll('.tags a');
-  console.log(cat_links);
-  console.log(tag_links);
-  tag_links.forEach(link => {
+  cat_links.forEach(link => {
     console.log(link);
-    link.onclick = function serve(e) {
+    link.onclick = (e) => {
       e.preventDefault();
-      console.log(e);
+      console.log(e.target.innerHTML, document.querySelectorAll('[category="' + e.target.innerHTML + '"]'));
     }
   });
   tag_links.forEach(link => {
     console.log(link);
-    link.onclick = function serve(e) {
+    link.onclick = (e) => {
       e.preventDefault();
-      console.log(e);
+      console.log(e.target.innerHTML, document.querySelectorAll('li[tags*="' + e.target.innerHTML + '"]'));
     }
   });
 </script>
