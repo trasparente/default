@@ -20,11 +20,11 @@
 </details><br>
 
 <div class='categories'>{% assign sorted_categories = site.categories | sort %}
-  <strong>Categories:</strong> <a href='#'>All</a> • {% for category in sorted_categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
+  <strong>Categories:</strong> <a href='#' class='muted-link'>All</a> • {% for category in sorted_categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
 </div>  
 
 <div class='tags'>{% assign sorted_tags = site.tags | sort %}
-  <strong>Tags:</strong> <a href='#'>All</a> • {% for tag in sorted_tags %}<a href='#'>{{ tag[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
+  <strong>Tags:</strong> <a href='#' class='muted-link'>All</a> • {% for tag in sorted_tags %}<a href='#'>{{ tag[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
 </div>
 
 <script>
