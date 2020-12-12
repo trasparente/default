@@ -54,7 +54,7 @@
   });
 </script>
 
-{% for category in site.categories %}<div category='{{ category[0] }}' tags='{% for tag in site.tags %}{{ tag[0] }}{% unless forloop.last %} {% endunless %}{% endfor %}'><h3>{{ category[0] }}</h3><ul>
+{% for category in site.categories %}<div category='{{ category[0] }}' tags='{{ category[1] | map: "tags" | join: " " }}'><h3>{{ category[0] }}</h3><ul>
 {% for post in category[1] %}<li tags='{{ post.tags | join: " " }}'> <a href='{{ post.url | absolute_url }}'>{{ post.title }}</a> {{ post.date | date_to_string }}</li>
 {% endfor %}</ul></div>
 {% endfor %}
