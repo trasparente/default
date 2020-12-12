@@ -19,7 +19,7 @@
   <button onclick='editor()'>Editor</button>
 </details>
 
-{% for category in site.categories %}<h3>{{ category[0] }}</h3>
-{% for post in category[1] %}- [{{ post.title }}]({{ post.url | absolute_url }}) {{ post.date | date_to_string }}
-{% endfor %}
+{% for category in site.categories %}<div category='{{ category[0] }}'><h3>{{ category[0] }}</h3><ul>
+{% for post in category[1] %}<li tags='{{ page.tags | join: " " }}'> [{{ post.title }}]({{ post.url | absolute_url }}) {{ post.date | date_to_string }}</li>
+{% endfor %}</ul></div>
 {% endfor %}
