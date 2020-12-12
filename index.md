@@ -19,8 +19,8 @@
   <button onclick='editor()'>Editor</button>
 </details>
 <script>
-  const cat_links = document.quoerySelectorAll('.categories a');
-  const tag_links = document.quoerySelectorAll('.tags a');
+  const cat_links = document.querySelectorAll('.categories a');
+  const tag_links = document.querySelectorAll('.tags a');
   tag_links.forEach(link => {
     link.onclick = e => {
       e.preventDefault();
