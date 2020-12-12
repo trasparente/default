@@ -28,20 +28,30 @@
 </div>
 
 <script>
-  const cat_links = document.querySelectorAll('.categories a');
-  const tag_links = document.querySelectorAll('.tags a');
-  cat_links.forEach(link => {
+  document.querySelectorAll('.categories a').forEach(link => {
     console.log(link);
     link.onclick = (e) => {
       e.preventDefault();
-      console.log(e.target.innerHTML, document.querySelectorAll('[category="' + e.target.innerHTML + '"]'));
+      const category = e.target.innerHTML;
+      if (category == 'All') {
+        document.querySelectorAll('[category]').style.display = 'block';
+      } else {
+        document.querySelectorAll('[category]').style.display = 'none';
+        document.querySelectorAll('[category="' + category + '"]').forEach(item => item.style.display = 'block')
+      }
     }
   });
-  tag_links.forEach(link => {
+  document.querySelectorAll('.tags a').forEach(link => {
     console.log(link);
     link.onclick = (e) => {
       e.preventDefault();
-      console.log(e.target.innerHTML, document.querySelectorAll('li[tags*="' + e.target.innerHTML + '"]'));
+      const tag = e.target.innerHTML;
+      if (tag == 'All') {
+        document.querySelectorAll('li[tags]').style.display = 'list-item';
+      } else {
+        document.querySelectorAll('li[tags]').style.display = 'none';
+        document.querySelectorAll('li[tags*="' + tag + '"]').forEach(item => item.style.display = 'list-item')
+      }
     }
   });
 </script>
