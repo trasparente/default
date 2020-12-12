@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '0 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -15,22 +15,25 @@ jobs:
           script: |
             // Get day before
             const d = new Date();
-            d.setDate(d.getDate()-3);
-            console.log(d.toISOString());
+            d.setDate(d.getDate()-2);
 
             // Commits since day before
-            const commits = await github.repos.listCommits({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              since: d.toISOString()
+            const commits = await github.paginate("GET /repos/{owner}/{repo}/commits",
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                since: d.toISOString()
+              },
+              (response) => response.data.map((commit) => commit.message.endsWith(".md") && commit.message.startsWith("Create") && !commit.message.includes("footer"))
+            ).then((filtered) => {
+              console.log(filtered);
             });
-            console.log('commits', commits.data.length);
 
             // Filter only creation of markdown (no footer)
-            const filtered = commits.data.filter(function(c){
-              const msg = c.commit.message;
-              return (msg.endsWith(".md") && msg.startsWith("Create") && !msg.includes("footer"));
-            });
+            //const filtered = commits.data.filter(function(c){
+            //  const msg = c.commit.message;
+            //  return (msg.endsWith(".md") && msg.startsWith("Create") && !msg.includes("footer"));
+            //});
             console.log('Filtered', filtered.length);
 
             // Loop filtered
