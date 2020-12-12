@@ -1,8 +1,8 @@
 name: Request Page Build
 on:
   schedule:
-    #- cron: '0 * * * *'
-    - cron: '1 */24 * * *'
+    - cron: '30 * * * *'
+    #- cron: '1 */24 * * *'
 
 jobs:
   build:
@@ -15,38 +15,45 @@ jobs:
           script: |
             // Get day before
             const d = new Date();
-            d.setDate(d.getDate()-1);
+            d.setDate(d.getDate()-2);
+
             // Commits since day before
             const commits = await github.repos.listCommits({
               owner: context.repo.owner,
               repo: context.repo.repo,
               since: d.toISOString()
             });
+
             // Filter only creation of markdown (no footer)
             const filtered = commits.data.filter(function(c){
               const msg = c.commit.message;
               return (msg.endsWith(".md") && msg.startsWith("Create") && !msg.includes("footer"));
             });
+
             // Loop filtered
             for (const commit of filtered){
+
               // Get creation commit and take filename
               const single = await github.repos.getCommit({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 ref: commit.sha
               });
+
               // Get updated file content
               const file = await github.repos.getContent({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 path: single.data.files[0].filename
               });
-              console.log(file);
+              console.log(file.data.path, atob(file.data.content);
               // decode content and add footer if not present
             }
+
+            console.log(filtered.length)
+
             // Trigger Pages rebuild
             const build = await github.repos.requestPagesBuild({
               owner: context.repo.owner,
               repo: context.repo.repo
             });
-            return build.data.status;
