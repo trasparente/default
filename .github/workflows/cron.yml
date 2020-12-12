@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '2 * * * *'
+    - cron: '55 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -16,6 +16,7 @@ jobs:
             // Get day before
             const d = new Date();
             d.setDate(d.getDate()-2);
+            console.log(d.toISOString());
 
             // Commits since day before
             const commits = await github.repos.listCommits({
@@ -48,7 +49,22 @@ jobs:
               });
               console.log(file.data.path);
               const content = Buffer.from(file.data.content, 'base64').toString('binary')
-              console.log(content.includes('{% include footer.md %}'));
+              if (!content.includes('{% include footer.md %}')) {
+                const new_content = content + '\n{% include footer.md %}';
+                const encoded_content = Buffer.from(new_content, 'binary').toString('base64');
+                const update = await github.repos.createOrUpdateFileContents({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: file.data.path,
+                  message: 'Append footer,
+                  content: encoded_content,
+                  committer.name: 'trasparente',
+                  committer.email: 'stradatrasparente@gmail.com',
+                  author.name: 'trasparente',
+                  author.email: 'stradatrasparente@gmail.com'
+                })
+              }
+              console.log();
               // console.log(window.atob(file.data.content));
               // decode content and add footer if not present
             }
