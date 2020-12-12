@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '53 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -25,8 +25,8 @@ jobs:
                 since: d.toISOString()
               },
               (response) => response.data.map((commit) => {
-                  return (commit.commit.message.endsWith(".md") && commit.commit.message.startsWith("Create") && !commit.commit.message.includes("footer");
+                  return (commit.commit.message.endsWith(".md") && commit.commit.message.startsWith("Create") && !commit.commit.message.includes("footer"))
                 })
             ).then((filtered) => {
-              console.log(filtered);
+              console.log(filtered)
             });
