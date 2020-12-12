@@ -18,13 +18,13 @@
   <input id=tags placeholder=Tags>
   <button onclick='editor()'>Editor</button>
 </details>
-
-<div class='categories'>
-  <a href='#'>All</a> - {% for category in site.categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
+<br>
+<div class='categories'>{% assign sorted_categories = site.categories | sort %}
+  <strong>Categories</strong> <a href='#'>All</a> - {% for category in sorted_categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
 </div>
-
-<div class='tags'>
-  <a href='#'>All</a> - {% for tag in site.tags %}<a href='#'>{{ tag[0] }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
+<br>
+<div class='tags'>{% assign sorted_tags = site.tags | sort %}
+  <strong>Tags</strong> <a href='#'>All</a> - {% for tag in sorted_tags %}<a href='#'>{{ tag[0] }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
 </div>
 
 {% for category in site.categories %}<div category='{{ category[0] }}'><h3>{{ category[0] }}</h3><ul>
