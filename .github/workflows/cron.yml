@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '1 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -58,10 +58,14 @@ jobs:
                   path: file.data.path,
                   message: 'Append footer',
                   content: encoded_content,
-                  committer.name: 'trasparente',
-                  committer.email: 'stradatrasparente@gmail.com',
-                  author.name: 'trasparente',
-                  author.email: 'stradatrasparente@gmail.com'
+                  committer: {
+                    name: 'trasparente',
+                    email: 'stradatrasparente@gmail.com'
+                  },
+                  author: {
+                    name: 'trasparente',
+                    email: 'stradatrasparente@gmail.com'
+                  }
                 });
               }
             }
