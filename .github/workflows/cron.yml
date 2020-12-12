@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '35 * * * *'
+    - cron: '45 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -47,7 +47,8 @@ jobs:
                 path: single.data.files[0].filename
               });
               console.log(file.data.path);
-              console.log(Buffer.from(file.data.content, 'base64').toString('binary'));
+              const content = Buffer.from(file.data.content, 'base64').toString('binary')
+              console.log(content.includes('{% include footer.md %}');
               // console.log(window.atob(file.data.content));
               // decode content and add footer if not present
             }
