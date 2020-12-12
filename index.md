@@ -31,6 +31,8 @@
   document.querySelectorAll('.categories a').forEach(link => {
     link.onclick = (e) => {
       e.preventDefault();
+      document.querySelectorAll('.categories a').forEach(el => el.classList.remove('muted-link'));
+      e.target.classList.add('muted-link');
       const category = e.target.innerHTML;
       if (category == 'All') {
         document.querySelectorAll('[category]').forEach(el => el.style.display = 'revert');
@@ -43,6 +45,8 @@
   document.querySelectorAll('.tags a').forEach(link => {
     link.onclick = (e) => {
       e.preventDefault();
+      document.querySelectorAll('.tags a').forEach(el => el.classList.remove('muted-link'));
+      e.target.classList.add('muted-link');
       const tag = e.target.innerHTML;
       if (tag == 'All') {
         document.querySelectorAll('[tags]').forEach(el => el.style.display = 'revert');
