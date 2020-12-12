@@ -21,13 +21,17 @@
 <script>
   const cat_links = document.querySelectorAll('.categories a');
   const tag_links = document.querySelectorAll('.tags a');
+  console.log(cat_links);
+  console.log(tag_links);
   tag_links.forEach(link => {
+    console.log(link);
     link.onclick = function serve(e) {
       e.preventDefault();
       console.log(e);
     }
   });
   tag_links.forEach(link => {
+    console.log(link);
     link.onclick = function serve(e) {
       e.preventDefault();
       console.log(e);
