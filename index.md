@@ -22,16 +22,16 @@
   const cat_links = document.querySelectorAll('.categories a');
   const tag_links = document.querySelectorAll('.tags a');
   tag_links.forEach(link => {
-    link.onclick = e => {
+    link.onclick = function serve(e) {
       e.preventDefault();
       console.log(e);
-    };
+    }
   });
   tag_links.forEach(link => {
-    link.onclick = e => {
+    link.onclick = function serve(e) {
       e.preventDefault();
       console.log(e);
-    };
+    }
   });
 </script>  
 
