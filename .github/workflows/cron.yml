@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '1 * * * *'
+    - cron: '40 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -32,6 +32,7 @@ jobs:
             });
 
             // Loop filtered
+            const added_footer = 0;
             for (const commit of filtered){
 
               // Get creation commit and take filename
@@ -58,6 +59,7 @@ jobs:
                   path: file.data.path,
                   message: 'Append footer',
                   content: encoded_content,
+                  sha: file.data.sha,
                   committer: {
                     name: 'trasparente',
                     email: 'stradatrasparente@gmail.com'
@@ -67,10 +69,11 @@ jobs:
                     email: 'stradatrasparente@gmail.com'
                   }
                 });
+                added_footer++;
               }
             }
 
-            console.log(filtered.length)
+            console.log(added_footer);
 
             // Trigger Pages rebuild
             const build = await github.repos.requestPagesBuild({
