@@ -18,13 +18,29 @@
   <input id=tags placeholder=Tags>
   <button onclick='editor()'>Editor</button>
 </details>
-<br>
+<script>
+  const cat_links = document.quoerySelectorAll('.categories a');
+  const tag_links = document.quoerySelectorAll('.tags a');
+  tag_links.forEach(link => {
+    link.onclick = e => {
+      e.preventDefault();
+      console.log(e);
+    };
+  });
+  tag_links.forEach(link => {
+    link.onclick = e => {
+      e.preventDefault();
+      console.log(e);
+    };
+  });
+</script>  
+
 <div class='categories'>{% assign sorted_categories = site.categories | sort %}
-  <strong>Categories</strong> <a href='#'>All</a> - {% for category in sorted_categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
-</div>
-<br>
+  <strong>Categories:</strong> <a href='#'>All</a> • {% for category in sorted_categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
+</div>  
+
 <div class='tags'>{% assign sorted_tags = site.tags | sort %}
-  <strong>Tags</strong> <a href='#'>All</a> - {% for tag in sorted_tags %}<a href='#'>{{ tag[0] }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
+  <strong>Tags:</strong> <a href='#'>All</a> • {% for tag in sorted_tags %}<a href='#'>{{ tag[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
 </div>
 
 {% for category in site.categories %}<div category='{{ category[0] }}'><h3>{{ category[0] }}</h3><ul>
