@@ -29,27 +29,25 @@
 
 <script>
   document.querySelectorAll('.categories a').forEach(link => {
-    console.log(link);
     link.onclick = (e) => {
       e.preventDefault();
       const category = e.target.innerHTML;
       if (category == 'All') {
-        document.querySelectorAll('[category]').style.display = 'block';
+        document.querySelectorAll('[category]').forEach(div => div.style.display = 'block');
       } else {
-        document.querySelectorAll('[category]').style.display = 'none';
+        document.querySelectorAll('[category]').forEach(div => div.style.display = 'none');
         document.querySelectorAll('[category="' + category + '"]').forEach(item => item.style.display = 'block')
       }
     }
   });
   document.querySelectorAll('.tags a').forEach(link => {
-    console.log(link);
     link.onclick = (e) => {
       e.preventDefault();
       const tag = e.target.innerHTML;
       if (tag == 'All') {
-        document.querySelectorAll('li[tags]').style.display = 'list-item';
+        document.querySelectorAll('li[tags]').forEach(li => li.style.display = 'list-item');
       } else {
-        document.querySelectorAll('li[tags]').style.display = 'none';
+        document.querySelectorAll('li[tags]').forEach(li => li.style.display = 'none');
         document.querySelectorAll('li[tags*="' + tag + '"]').forEach(item => item.style.display = 'list-item')
       }
     }
