@@ -73,11 +73,12 @@ jobs:
                     email: 'stradatrasparente@gmail.com'
                   }
                 });
+                console.log(update.data);
                 added_footer++;
               }
             }
 
-            if (added_footer.length != 0) { return; }
+            if (added_footer.length > 0) { return; }
 
             // Trigger Pages rebuild
             const build = await github.repos.requestPagesBuild({
