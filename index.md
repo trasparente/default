@@ -17,7 +17,7 @@
     <input id=title placeholder=Title required>
     <input id=category placeholder=Category required>
     <input id=tags placeholder=Tags>
-    <input type=submit value='Editor'>
+    <input type=submit value=Editor>
   </form>
 </details>
 <p></p>
