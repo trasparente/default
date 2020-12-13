@@ -13,10 +13,12 @@
       return true
     };
   </script>
-  <input id=title placeholder=Title required>
-  <input id=category placeholder=Category required>
-  <input id=tags placeholder=Tags>
-  <button onclick='editor()'>Editor</button>
+  <form>
+    <input id=title placeholder=Title required>
+    <input id=category placeholder=Category required>
+    <input id=tags placeholder=Tags>
+    <input type=submit onclick='editor()' value='Editor'>
+  </form>
 </details>
 <p></p>
 {% assign sorted_categories = site.categories | sort %}
@@ -40,7 +42,15 @@
 <script>
   document.querySelectorAll('select').forEach(select => {
     select.onchange = (e) => {
-      console.log(e, e.target, e.target.value);
+      const value = e.target.value;
+      const id = e.target.id;
+      if (category == 'all') {
+        document.querySelectorAll('[' + id +']').forEach(el => el.style.display = 'revert');
+      } else {
+        document.querySelectorAll('[' + id +']').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('[' + id +'="' + value + '"]').forEach(el => el.style.display = 'revert')
+      }
+      console.log(id, value);
     }
   });
   document.querySelectorAll('.categories a').forEach(link => {
