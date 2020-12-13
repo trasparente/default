@@ -21,7 +21,6 @@
   </form>
 </details>
 <p></p>
-
 {% assign sorted_categories = site.categories | sort %}
 <select name="category" id="category">
     <option value="all">All</option>
