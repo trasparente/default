@@ -22,12 +22,12 @@
 {% assign sorted_categories = site.categories | sort %}
 <select name="category" id="category">
     <option value="all">All</option>
-    {% for category in sorted_categories %}<option value="{{ category[0] }}">{{ category[0] }} {{ category[1] | size }}</option>{% endfor %}
+    {% for category in sorted_categories %}<option value="{{ category[0] }}">{{ category[0] }} ({{ category[1] | size }})</option>{% endfor %}
 </select>
 {% assign sorted_tags = site.tags | sort %}
 <select name="tag" id="tag">
     <option value="all">All</option>
-    {% for tag in sorted_tags %}<option value="{{ tag[0] }}">{{ tag[0] }} {{ tag[1] | size }}</option>{% endfor %}
+    {% for tag in sorted_tags %}<option value="{{ tag[0] }}">{{ tag[0] }} ({{ tag[1] | size }})</option>{% endfor %}
 </select>
 <div class='categories'>{% assign sorted_categories = site.categories | sort %}
   <strong>Categories:</strong> <a href='#' class='muted-link'>All</a> • {% for category in sorted_categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
@@ -40,7 +40,7 @@
 <script>
   document.querySelectorAll('select').forEach(select => {
     select.onchange = (e) => {
-      consolge.log(e);
+      console.log(e, e.target, e.target.value);
     }
   });
   document.querySelectorAll('.categories a').forEach(link => {
