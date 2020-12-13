@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '25 * * * *'
+    - cron: '0 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
           script: |
             // Get day before
             const d = new Date();
-            d.setDate(d.getDate()-2);
+            d.setDate(d.getDate()-3);
 
             // Commits since day before
             const commits = await github.paginate("GET /repos/{owner}/{repo}/commits",
@@ -28,5 +28,59 @@ jobs:
                   return (commit.commit.message.endsWith(".md") && commit.commit.message.startsWith("Create") && !commit.commit.message.includes("footer"))
                 })
             ).then((filtered) => {
-              console.log(filtered)
+              // Loop filtered
+              const added_footer = 0;
+              for (const commit of filtered){
+
+                // Get creation commit and take filename
+                const single = await github.repos.getCommit({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: commit.sha
+                });
+                console.log('single', single.data.files[0].filename);
+
+                // Get updated file content
+                const file = await github.repos.getContent({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: single.data.files[0].filename
+                });
+                console.log('file.data.sha', file.data.sha);
+                
+                // Decode content and check if footer is present
+                const content = Buffer.from(file.data.content, 'base64').toString('binary');
+                if (!content.includes('{% include footer.md %}')) {
+                  const new_content = content + '\n{% include footer.md %}';
+                  const encoded_content = Buffer.from(new_content, 'binary').toString('base64');
+                  const update = await github.repos.createOrUpdateFileContents({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    path: file.data.path,
+                    message: 'Append footer',
+                    content: encoded_content,
+                    sha: file.data.sha,
+                    committer: {
+                      name: 'trasparente',
+                      email: 'stradatrasparente@gmail.com'
+                    },
+                    author: {
+                      name: 'trasparente',
+                      email: 'stradatrasparente@gmail.com'
+                    }
+                  });
+                  console.log('update content', update.data);
+                  added_footer++;
+                }
+              }
+
+              if (added_footer.length > 0) { return; }
+
+              // Trigger Pages rebuild
+              const build = await github.repos.requestPagesBuild({
+                owner: context.repo.owner,
+                repo: context.repo.repo
+              });
+              return build.status;
+
             });
