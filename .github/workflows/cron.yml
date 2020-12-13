@@ -1,7 +1,7 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '42 * * * *'
     #- cron: '1 */24 * * *'
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
               (response) => response.data.filter((commit) => {
                   return (commit.commit.message.endsWith(".md") && commit.commit.message.startsWith("Create") && !commit.commit.message.includes("footer"))
                 })
-            ).then((filtered) => {
+            ).then(async (filtered) => {
               // Loop filtered
               const added_footer = 0;
               for (const commit of filtered){
