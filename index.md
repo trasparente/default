@@ -3,6 +3,7 @@
 <details>
   <summary>Add</summary>
   <script>
+    document.getElementById('editor').onsubmit
     function editor(){
       const category = document.getElementById('category').value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-');
       const date = "{{ site.time | date: '%Y-%m-%d-' }}";
@@ -13,11 +14,11 @@
       return true
     };
   </script>
-  <form>
+  <form oncsubmit='editor()'>
     <input id=title placeholder=Title required>
     <input id=category placeholder=Category required>
     <input id=tags placeholder=Tags>
-    <input type=submit onclick='editor()' value='Editor'>
+    <input type=submit value='Editor'>
   </form>
 </details>
 <p></p>
@@ -44,7 +45,7 @@
     select.onchange = (e) => {
       const value = e.target.value;
       const id = e.target.id;
-      if (category == 'all') {
+      if (value == 'all') {
         document.querySelectorAll('[' + id +']').forEach(el => el.style.display = 'revert');
       } else {
         document.querySelectorAll('[' + id +']').forEach(el => el.style.display = 'none');
