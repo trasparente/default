@@ -20,6 +20,7 @@
     <input type=submit value=Editor>
   </form>
 </details>
+<p> </p>
 
 Category <select name="category" id="category">
     <option value="all">All</option>
@@ -37,10 +38,10 @@ Tag <select name="tag" id="tag">
       const value = e.target.value;
       const id = e.target.id;
       if (value == 'all') {
-        document.querySelectorAll('[' + id +']').forEach(el => el.style.display = 'revert');
+        document.querySelectorAll('[' + id + ']').forEach(el => el.style.display = 'revert');
       } else {
-        document.querySelectorAll('[' + id +']').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('[' + id +'="' + value + '"]').forEach(el => el.style.display = 'revert')
+        document.querySelectorAll('[' + id + ']').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('[' + id + '="' + value + '"]').forEach(el => el.style.display = 'revert')
       }
     }
   });
