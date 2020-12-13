@@ -1,4 +1,4 @@
-name: Request Page Build
+name: Append footers or request Pages build
 on:
   schedule:
     #- cron: '12 * * * *'
@@ -87,6 +87,6 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo
               });
-              return build.status;
+              return build.data.status;
 
             });
