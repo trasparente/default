@@ -1,3 +1,1 @@
-<div class='rule'></div>
-
-- [Repo]({{ site.github.repository_url }}) | [Page]({{ site.github.repository_url }}/blob/main/{{ page.path }}) | {{ site.posts | size }} Posts | {{ site.categories | size }} Categories | {{ site.tags | size }} Tags | {% assign start = '2020-12-10' | date: '%s' %}{% assign difference = site.time | date: '%s' | minus: start %}{{ difference }}
+| [Repo]({{ site.github.repository_url }}) | [Page]({{ site.github.repository_url }}/blob/main/{{ page.path }}) | {{ site.posts | size }} Posts | {{ site.categories | size }} Categories | {{ site.tags | size }} Tags | Age {% assign start = '2020-12-10' | date: '%s' %}{% assign difference = site.time | date: '%s' | minus: start %}{{ difference | divided_by: 86400 | round: 1 }} days | Updated {{ site.time }}
