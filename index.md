@@ -21,6 +21,7 @@
   </form>
 </details>
 <p></p>
+
 {% assign sorted_categories = site.categories | sort %}
 <select name="category" id="category">
     <option value="all">All</option>
@@ -31,14 +32,6 @@
     <option value="all">All</option>
     {% for tag in sorted_tags %}<option value="{{ tag[0] }}">{{ tag[0] }} ({{ tag[1] | size }})</option>{% endfor %}
 </select>
-<div class='categories'>{% assign sorted_categories = site.categories | sort %}
-  <strong>Categories:</strong> <a href='#' class='muted-link'>All</a> • {% for category in sorted_categories %}<a href='#'>{{ category[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
-</div>  
-
-<div class='tags'>{% assign sorted_tags = site.tags | sort %}
-  <strong>Tags:</strong> <a href='#' class='muted-link'>All</a> • {% for tag in sorted_tags %}<a href='#'>{{ tag[0] }}</a>{% unless forloop.last %} • {% endunless %}{% endfor %}
-</div>
-
 <script>
   document.querySelectorAll('select').forEach(select => {
     select.onchange = (e) => {
@@ -50,41 +43,12 @@
         document.querySelectorAll('[' + id +']').forEach(el => el.style.display = 'none');
         document.querySelectorAll('[' + id +'="' + value + '"]').forEach(el => el.style.display = 'revert')
       }
-      console.log(id, value);
-    }
-  });
-  document.querySelectorAll('.categories a').forEach(link => {
-    link.onclick = (e) => {
-      e.preventDefault();
-      document.querySelectorAll('.categories a').forEach(el => el.classList.remove('muted-link'));
-      e.target.classList.add('muted-link');
-      const category = e.target.innerHTML;
-      if (category == 'All') {
-        document.querySelectorAll('[category]').forEach(el => el.style.display = 'revert');
-      } else {
-        document.querySelectorAll('[category]').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('[category="' + category + '"]').forEach(el => el.style.display = 'revert')
-      }
-    }
-  });
-  document.querySelectorAll('.tags a').forEach(link => {
-    link.onclick = (e) => {
-      e.preventDefault();
-      document.querySelectorAll('.tags a').forEach(el => el.classList.remove('muted-link'));
-      e.target.classList.add('muted-link');
-      const tag = e.target.innerHTML;
-      if (tag == 'All') {
-        document.querySelectorAll('[tags]').forEach(el => el.style.display = 'revert');
-      } else {
-        document.querySelectorAll('[tags]').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('[tags*="' + tag + '"]').forEach(el => el.style.display = 'revert')
-      }
     }
   });
 </script>
 
 {% for category in site.categories %}<div category='{{ category[0] }}' tags='{{ category[1] | map: "tags" | join: " " }}'><h3>{{ category[0] }}</h3><ul>
-{% for post in category[1] %}<li tags='{{ post.tags | join: " " }}'> <a href='{{ post.url | absolute_url }}'>{{ post.title }}</a> {{ post.date | date_to_string }}</li>
+{% for post in category[1] %}<li tag='{{ post.tags | join: " " }}'> <a href='{{ post.url | absolute_url }}'>{{ post.title }}</a> {{ post.date | date_to_string }}</li>
 {% endfor %}</ul></div>
 {% endfor %}
 
