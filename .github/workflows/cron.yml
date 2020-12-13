@@ -1,8 +1,8 @@
 name: Request Page Build
 on:
   schedule:
-    - cron: '12 * * * *'
-    #- cron: '1 */24 * * *'
+    #- cron: '12 * * * *'
+    - cron: '1 */24 * * *'
 
 jobs:
   build:
