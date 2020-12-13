@@ -20,16 +20,14 @@
     <input type=submit value=Editor>
   </form>
 </details>
-<p></p>
-<select name="category" id="category">
+<p></p><select name="category" id="category">
     <option value="all">All</option>
     {% assign sorted_categories = site.categories | sort %}{% for category in sorted_categories %}<option value="{{ category[0] }}">{{ category[0] }} ({{ category[1] | size }})</option>{% endfor %}
 </select>
 <select name="tag" id="tag">
     <option value="all">All</option>
     {% assign sorted_tags = site.tags | sort %}{% for tag in sorted_tags %}<option value="{{ tag[0] }}">{{ tag[0] }} ({{ tag[1] | size }})</option>{% endfor %}
-</select>
-<script>
+</select><script>
   document.querySelectorAll('select').forEach(select => {
     select.onchange = (e) => {
       const value = e.target.value;
