@@ -62,3 +62,5 @@
 {% for post in category[1] %}<li tags='{{ post.tags | join: " " }}'> <a href='{{ post.url | absolute_url }}'>{{ post.title }}</a> {{ post.date | date_to_string }}</li>
 {% endfor %}</ul></div>
 {% endfor %}
+
+{% include footer.md %}
