@@ -15,3 +15,11 @@ path | {{ page.path }}
 id | {{ page.id }}
 dir | {{ page.dir }}
 name | {{ page.name }}
+
+Post ||
+---|---|
+url | {{ post.url }}
+path | {{ post.path }}
+id | {{ post.id }}
+dir | {{ post.dir }}
+name | {{ post.name }}
