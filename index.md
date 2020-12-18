@@ -2,25 +2,29 @@
 ---
 <details>
   <summary>Add</summary>
-  <script>
-    function editor(){
-      const category = document.getElementById('category').value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-');
+  <form id='add'>
+    <input id=add_title placeholder=Title required>
+    <input id=add_category placeholder=Category required>
+    <select name="add_category" id="add_category">
+      {% assign sorted_categories = site.categories | sort %}{% for category in sorted_categories %}<option value="{{ category[0] }}">{{ category[0] }} ({{ category[1] | size }})</option>{% endfor %}
+    </select>
+    <input id=add_tags placeholder=Tags>
+    <input type=submit value=Editor>
+  </form>
+    <script>
+    document.getElementById('add').onsubmit = (event) => {
+      event.preventDefault();
+      const category = document.getElementById('add_category').value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-');
       const date = "{{ site.time | date: '%Y-%m-%d-' }}";
-      const title = document.getElementById('title').value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-');
-      const tags = document.getElementById('tags').value;
+      const title = document.getElementById('add_title').value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-');
+      const tags = document.getElementById('add_tags').value;
       const url='{{ site.github.repository_url }}/new/main?filename=' + category + '/_posts/' + date + title + '.md&value=---%0Atags:%20[' + tags + ']%0A---%0A';
       location = url;
       return true
     };
   </script>
-  <form onsubmit='editor()'>
-    <input id=title placeholder=Title required>
-    <input id=category placeholder=Category required>
-    <input id=tags placeholder=Tags>
-    <input type=submit value=Editor>
-  </form>
 </details>
-<p> </p>
+<p></p>
 
 Category <select name="category" id="category">
     <option value="all">All</option>
@@ -33,7 +37,7 @@ Tag <select name="tag" id="tag">
 </select>
 
 <script>
-  document.querySelectorAll('select').forEach(select => {
+  document.querySelectorAll('#category, #tag').forEach(select => {
     select.onchange = (e) => {
       const value = e.target.value;
       const id = e.target.id;
