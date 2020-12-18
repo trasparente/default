@@ -1,12 +1,16 @@
 ---
 tags: [site,page]
 ---
-Site | Size |
----|---|
+{% assign static_files_list = site.static_files | map: "path" %}
+{% assign html_pages_list = site.html_pages | map: "path" %}
+{% assign html_files_list = site.html_files | map: "path" %}
+
+Site | Size | Details
+---|---|---
 pages | {{ site.pages.size }}
-html_pages | pages subset with `.html` {{ site.html_pages.size }}
-static_files | not processed by Jekyll/Liquid {{ site.static_files.size }}
-html_files | static_files subset with `.html` {{ site.html_files.size }}{: list="{{ site.html_files | map: 'url' }}"}
+html_pages | {{ site.html_pages.size }} | pages subset with `.html` {{ html_pages_list }}
+static_files | {{ site.static_files.size }} | not processed by Jekyll/Liquid {{ static_files_list }}
+html_files | {{ site.html_files.size }} | static_files subset with `.html` {{ html_files_list }}
 
 Page ||
 ---|---|
@@ -15,11 +19,3 @@ path | {{ page.path }}
 id | {{ page.id }}
 dir | {{ page.dir }}
 name | {{ page.name }}
-
-Post ||
----|---|
-url | {{ post.url }}
-path | {{ post.path }}
-id | {{ post.id }}
-dir | {{ post.dir }}
-name | {{ post.name }}
