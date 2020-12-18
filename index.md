@@ -44,7 +44,7 @@ Tag <select name="tag" id="tag">
         document.querySelectorAll('[' + id + ']').forEach(el => el.style.display = 'revert');
       } else {
         document.querySelectorAll('[' + id + ']').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('[' + id + '="' + value + '"]').forEach(el => el.style.display = 'revert')
+        document.querySelectorAll('[' + id + '*="' + value + '"]').forEach(el => el.style.display = 'revert')
       }
     }
   });
