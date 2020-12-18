@@ -4,9 +4,8 @@
   <summary>Add</summary>
   <form id='add'>
     <input id=add_title placeholder=Title required>
-    <input id=add_category placeholder=Category required>
     <select name="add_category" id="add_category">
-      {% assign sorted_categories = site.categories | sort %}{% for category in sorted_categories %}<option value="{{ category[0] }}">{{ category[0] }} ({{ category[1] | size }})</option>{% endfor %}
+      {% assign sorted_categories = site.categories | sort %}{% for category in sorted_categories %}<option value="{{ category[0] }}">{{ category[0] }}</option>{% endfor %}
     </select>
     <input id=add_tags placeholder=Tags>
     <input type=submit value=Editor>
