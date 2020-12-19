@@ -76,8 +76,8 @@ jobs:
                 }
               }
 
-              if (added_footer.length > 0) {
-                console.log('Updated ' + added_footer.length + ' files. Exit');
+              if (added_footer > 0) {
+                console.log('Updated ' + added_footer + ' files. Exit');
                 return;
               }
 
