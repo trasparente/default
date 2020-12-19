@@ -20,3 +20,5 @@ path | {{ page.path }}
 id | {{ page.id }}
 dir | {{ page.dir }}
 name | {{ page.name }}
+
+{% include footer.md %}
