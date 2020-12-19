@@ -15,10 +15,10 @@ html_files | {{ site.html_files.size }} | static_files subset with `.html`: `{{ 
 
 Page ||
 ---|---|
-url | {{ page.url }}
-path | {{ page.path }}
-id | {{ page.id }}
-dir | {{ page.dir }}
-name | {{ page.name }}
+url | `{{ page.url }}`
+path | `{{ page.path }}`
+id | `{{ page.id }}`
+dir | `{{ page.dir }}`
+name | `{{ page.name }}`
 
 {% include footer.md %}
