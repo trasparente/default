@@ -14,7 +14,7 @@ static_files | {{ site.static_files.size }} | not processed by Jekyll/Liquid: `{
 html_files | {{ site.html_files.size }} | static_files subset with `.html`: `{{ html_files_list }}`
 
 
-Page ||
+Page | Value |
 ---|---|
 url | `{{ page.url }}`
 path | `{{ page.path }}`
