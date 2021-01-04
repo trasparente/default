@@ -43,3 +43,5 @@ javascript:void(window.location.href='https://web.archive.org/web/*/'+location.h
 ```js
 javascript:l='https://archive.org';if(location.origin!=l)location=l+"/web/#"+location.href;else{if(document.getElementById('web_save_url')){document.getElementById('web_save_url').value=window.location.hash.slice(1);document.getElementById('web_save_button').click()}}
 ```
+
+{% include footer.md %}
