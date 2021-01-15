@@ -36,8 +36,24 @@ window.location.href = window.location.protocol +
 ```
 
 ### Parse goodreads for Simulibros
+<a href='javascript:image=document.getElementById('coverImage').src;rating=document.querySelector('[itemprop="ratingValue"]').textContent.trim();publisher=document.evaluate("//div[contains(text(),'Published')]", document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue.innerHTML.trim().match('by(.*?)$')||['',''];year=document.evaluate("//div[contains(text(),'Published')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue.innerHTML.trim().match('[0-9]{4}')[0];link=location.href;serie=document.getElementById('bookSeries').textContent.trim().replace(String.fromCharCode(32)+"#",","+String.fromCharCode(32)+"#");author=document.querySelector('.authorName>span[itemprop="name"]').textContent.trim().replace(/(^\s+)|\s(?=\s+)|(\s+$)/,"");title=document.getElementById('bookTitle').textContent.trim();hash="title="+title+"%20"+serie+"&author="+author+"&year="+year+"&link="+link+"&publisher="+publisher[1]+"&rating="+rating+"&image_url="+image;window.location="https://petrosh.github.io/simulibros/add_book?a="+btoa(hash)'>bookmark</a>
 ```js
-javascript:image=document.getElementById('coverImage').src;rating=document.querySelector('[itemprop="ratingValue"]').textContent.trim();publisher=document.evaluate("//div[contains(text(),'Published')]", document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue.innerHTML.trim().match('by(.*?)$')||['',''];year=document.evaluate("//div[contains(text(),'Published')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue.innerHTML.trim().match('[0-9]{4}')[0];link=location.href;serie=document.getElementById('bookSeries').textContent.trim().replace("%20#",",%20#");author=document.querySelector('.authorName>span[itemprop="name"]').textContent.trim().replace("%20%20","%20");title=document.getElementById('bookTitle').textContent.trim();hash="title="+title+"%20"+serie+"&author="+author+"&year="+year+"&link="+link+"&publisher="+publisher[1]+"&rating="+rating+"&image_url="+image;window.location="https://petrosh.github.io/simulibros/add_book?a="+btoa(hash)
+image = document.getElementById('coverImage').src;
+rating = document.querySelector('[itemprop="ratingValue"]').textContent.trim();
+publisher = document.evaluate(
+    "//div[contains(text(),'Published')]", 
+    document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null
+  ).singleNodeValue.innerHTML.trim().match('by(.*?)$')||['',''];
+year = document.evaluate(
+    "//div[contains(text(),'Published')]",
+    document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null
+  ).singleNodeValue.innerHTML.trim().match('[0-9]{4}')[0];
+link = location.href;
+serie = document.getElementById('bookSeries').textContent.trim().replace(String.fromCharCode(32)+"#",","+String.fromCharCode(32)+"#");
+author = document.querySelector('.authorName>span[itemprop="name"]').textContent.trim().replace(/(^\s+)|\s(?=\s+)|(\s+$)/,"");
+title = document.getElementById('bookTitle').textContent.trim();
+hash = "title=" + title + "%20" + serie + "&author=" + author + "&year=" + year + "&link=" + link + "&publisher=" + publisher[1].trim() + "&rating=" + rating + "&image_url=" + image;
+window.location = "https://petrosh.github.io/simulibros/add_book?a=" + btoa(hash)
 ```
 
 ### Archive.org Check page
