@@ -20,13 +20,19 @@ javascript:(function(){;!function(e)%7Bvar%20t=%7B%7D;function%20n(a)%7Bif(t%5Ba
 ```
 
 ### GitHub Repository
+<a href='javascript:void(window.location.href=window.location.protocol+"//github.com/"+window.location.host.split(".")[0]+"/"+window.location.pathname.split("/")[1])'>bookmark</a>
 ```js
-javascript:void(window.location.href=window.location.protocol+"//github.com"+"/"+window.location.host.split(".")[0]+"/"+window.location.pathname.split("/")[1])
+window.location.href = window.location.protocol +
+  "//github.com/" + window.location.host.split(".")[0] +
+  "/" + window.location.pathname.split("/")[1]
 ```
 
 ### Github Website
+<a href='javascript:void(window.location.href=window.location.protocol+"//"+window.location.pathname.split("/")[1]+".github.io/"+window.location.pathname.split("/")[2]+"/")'>bookmark</a>
 ```js
-javascript:void(window.location.href=window.location.protocol+"//"+window.location.pathname.split("/")[1]+".github.io/"+window.location.pathname.split("/")[2]+"/")
+window.location.href = window.location.protocol +
+  "//" + window.location.pathname.split("/")[1] +
+  ".github.io/" + window.location.pathname.split("/")[2] + "/"
 ```
 
 ### Parse goodreads for Simulibros
