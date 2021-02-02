@@ -1,5 +1,5 @@
 ---
-tags: ["null", undefined, false]
+tags: ["null", "undefined", "false"]
 ---
 ```coffee
 [undefined, null, false, NaN, 0, ''].map (e) -> console.log e, e?, e ? '1', e || '2'
