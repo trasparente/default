@@ -10,6 +10,7 @@ tags: ["null", "undefined", "false"]
 # 0 true 0 2
 # <empty string> true <empty string> 2
 ```
+
 | Symbol | Expression | Accept | Refuse
 |---|---|---|---
 | `?` | `e ? default` | `false` `NaN` `0` `<empty string>` | `undefined` `null`
