@@ -19,3 +19,5 @@ tags: ["null", "undefined", "false"]
 `e?` is just the boolean of `e ? default`
 
 > Use string quotes on tags: (`null` vs `"null"`)
+
+{% include footer.md %}
