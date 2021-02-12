@@ -167,3 +167,5 @@ function myTimer() {
   console.log("timer 1500");
 };
 ```
+
+{% include footer.md %}
