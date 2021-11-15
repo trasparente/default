@@ -1,6 +1,23 @@
 ---
 tags: [adblock]
 ---
+### 2021
+https://www.reddit.com/
+```css
+.thumbnail{
+  width: 200px;
+  height: auto;
+  max-height:none;
+}
+.thumbnail img{
+  width: 200px;
+  height: auto;
+}
+.side{
+  width: 100px;
+  overflow: hidden;
+}
+```
 ```css
 /* https://www.duckduckgo.com */
 .result__snippet{
