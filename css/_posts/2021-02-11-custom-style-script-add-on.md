@@ -119,6 +119,9 @@ div[style*="position: fixed; width: 100%;"]{
 .ytd-display-ad-renderer {
   display: none;
 }
+ytd-rich-grid-media[mini-mode] #video-title.ytd-rich-grid-media{
+  display: contents;
+}
 #placeholder-area{
  background: hsl(50.2, 73.5%, 16.3%);
 }
