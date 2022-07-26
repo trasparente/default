@@ -4,6 +4,12 @@ tags: []
 * toc
 {:toc}
 
+### YouTube First Frame
+`https://www.youtube.com/watch?v=...` to `https://i.ytimg.com/vi/.../maxresdefault.jpg`
+```js
+javascript:(function(s){ s=location.href.match(/v=([^&#]{5,})/)[1];location="https://i.ytimg.com/vi/"+s+"/maxresdefault.jpg";})()
+```
+
 ### NYTimes break
 ```js
 javascript:document.getElementById("gateway-content").remove();app=document.querySelector('#app>div>div');app.style.overflow='auto';document.querySelector('#app>div>div>div:last-child').remove()
@@ -36,7 +42,10 @@ window.location.href = window.location.protocol +
 ```
 
 ### Parse goodreads for Simulibros
+```html
 <a href='javascript:image=document.getElementById('coverImage').src;rating=document.querySelector('[itemprop="ratingValue"]').textContent.trim();publisher=document.evaluate("//div[contains(text(),'Published')]", document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue.innerHTML.trim().match('by(.*?)$')||['',''];year=document.evaluate("//div[contains(text(),'Published')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue.innerHTML.trim().match('[0-9]{4}')[0];link=location.href;serie=document.getElementById('bookSeries').textContent.trim().replace(String.fromCharCode(32)+"#",","+String.fromCharCode(32)+"#");author=document.querySelector('.authorName>span[itemprop="name"]').textContent.replace(/(^\s+)|\s(?=\s+)|(\s+$)/,"").trim();title=document.getElementById('bookTitle').textContent.trim();hash="title="+title+"%20"+serie+"&author="+author+"&year="+year+"&link="+link+"&publisher="+publisher[1].trim()+"&rating="+rating+"&image_url="+image;window.location="https://petrosh.github.io/simulibros/add_book?a="+btoa(hash)'>bookmark</a>
+```
+
 ```js
 image = document.getElementById('coverImage').src;
 rating = document.querySelector('[itemprop="ratingValue"]').textContent.trim();
