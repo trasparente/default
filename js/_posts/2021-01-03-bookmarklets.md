@@ -4,6 +4,12 @@ tags: []
 * toc
 {:toc}
 
+### PRI Issue Selection New Tab
+
+```js
+javascript:var w=window.open();try{s=document.selection.createRange().text}catch(_){s=document.getSelection()};w.location="https://github.com/trasparente/pri/issues/new?title="+encodeURIComponent(document.title)+"&body="+location+String.fromCharCode(37)+"0A---"+String.fromCharCode(37)+"0A"+encodeURIComponent(s);w.document.close();
+```
+
 ### YouTube First Frame
 `https://www.youtube.com/watch?v=...` to `https://i.ytimg.com/vi/.../maxresdefault.jpg`
 ```js
