@@ -4,6 +4,12 @@ tags: []
 * toc
 {:toc}
 
+### PRI New Page New Tab
+
+```js
+javascript:(function()%7Bjavascript%3Avar%20w%3Dwindow.open()%3B%0Avar%20dat%3Dnew%20Date().toLocaleDateString('en-CA')%3B%0Avar%20time%3Dnew%20Date().toISOString().substring(11%2C%2019)%3B%0Avar%20offset%3D-(new%20Date().getTimezoneOffset()%2F60)%3B%0Avar%20host%3Dlocation.host.replace(%22https%3A%2F%2F%22%2C%22%22).replace(%22http%3A%2F%2F%22%2C%22%22).replace(%22www.%22%2C%22%22)%3B%0Avar%20category%3Dhost.substring(0%2C%20host.indexOf(%22.%22))%3B%0Avar%20cat%20%3D%20category%20%7C%7C%20%22uncategorized%22%0Avar%20sign%3D(offset%20%3E%200)%20%3F%20%22%252B%22%20%2B%20offset%20%3A%20%22-%22%20%2B%20offset%3B%0Avar%20slug%3Ddocument.title.toString().toLowerCase().trim().replace(%2F%5B%5E%5Cw%5Cs-%5D%2Fg%2C'').replace(%2F%5B%5Cs_-%5D%2B%2Fg%2C'_').replace(%2F%5E-%2B%7C-%2B%24%2Fg%2C'')%3Btry%7Bs%3Ddocument.selection.createRange().text%7Dcatch(_)%7Bs%3Ddocument.getSelection()%7D%3Bw.location%3D%22https%3A%2F%2Fgithub.com%2Ftrasparente%2Fpri%2Fnew%2Fmain%3Ffilename%3D%22%2Bcat%2B%22%2F%22%2Bslug%2B%22.md%26value%3Dtitle%3A%2520%22%2Bdocument.title%2B%22%250Aurl%3A%2520%22%2Blocation%2B%22%250Adate%3A%2520%22%2Bdat%2B%22%2520%22%2Btime%2B%22%2520%22%2Bsign%2B%22%250A---%250A%250A%2523%2520%22%2Bdocument.title%2B%22%250A%250A-%2520%22%2BencodeURIComponent(s)%3Bw.document.close()%3B%7D)()%3B
+```
+
 ### PRI Issue Selection New Tab
 
 ```js
