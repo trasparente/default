@@ -76,27 +76,22 @@ window.location.href = window.location.protocol +
 ```
 
 ### Parse goodreads for Simulibros
-```html
-<a href='javascript:image=document.getElementById('coverImage').src;rating=document.querySelector('[itemprop="ratingValue"]').textContent.trim();publisher=document.evaluate("//div[contains(text(),'Published')]", document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue.innerHTML.trim().match('by(.*?)$')||['',''];year=document.evaluate("//div[contains(text(),'Published')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue.innerHTML.trim().match('[0-9]{4}')[0];link=location.href;serie=document.getElementById('bookSeries').textContent.trim().replace(String.fromCharCode(32)+"#",","+String.fromCharCode(32)+"#");author=document.querySelector('.authorName>span[itemprop="name"]').textContent.replace(/(^\s+)|\s(?=\s+)|(\s+$)/,"").trim();title=document.getElementById('bookTitle').textContent.trim();hash="title="+title+"%20"+serie+"&author="+author+"&year="+year+"&link="+link+"&publisher="+publisher[1].trim()+"&rating="+rating+"&image_url="+image;window.location="https://petrosh.github.io/simulibros/add_book?a="+btoa(hash)'>bookmark</a>
+
+```js
+javascript:
+image = document.querySelector(".ResponsiveImage").src;
+rating = document.querySelector(".RatingStatistics__rating").textContent.trim();
+year = document.querySelector("[data-testid=publicationInfo]").textContent.slice(-4);
+link = location.href;
+serie = document.querySelector(".Text__subdued").textContent;
+author = document.querySelector("[data-testid=name]").textContent;
+title = document.querySelector("[data-testid=bookTitle]").textContent;
+hash = "title=" + title + "%20" + serie + "&author=" + author + "&year=" + year + "&link=" + link + "&rating=" + rating + "&image_url=" + image;
+window.location = "https://petrosh.github.io/simulibros/add_book?a=" + btoa(hash);
 ```
 
 ```js
-image = document.getElementById('coverImage').src;
-rating = document.querySelector('[itemprop="ratingValue"]').textContent.trim();
-publisher = document.evaluate(
-    "//div[contains(text(),'Published')]", 
-    document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null
-  ).singleNodeValue.innerHTML.trim().match('by(.*?)$')||['',''];
-year = document.evaluate(
-    "//div[contains(text(),'Published')]",
-    document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null
-  ).singleNodeValue.innerHTML.trim().match('[0-9]{4}')[0];
-link = location.href;
-serie = document.getElementById('bookSeries').textContent.trim().replace(String.fromCharCode(32)+"#",","+String.fromCharCode(32)+"#");
-author = document.querySelector('.authorName>span[itemprop="name"]').textContent.trim().replace(/(^\s+)|\s(?=\s+)|(\s+$)/,"");
-title = document.getElementById('bookTitle').textContent.trim();
-hash = "title=" + title + "%20" + serie + "&author=" + author + "&year=" + year + "&link=" + link + "&publisher=" + publisher[1].trim() + "&rating=" + rating + "&image_url=" + image;
-window.location = "https://petrosh.github.io/simulibros/add_book?a=" + btoa(hash)
+javascript:(function()%7Bjavascript%3A%0Aimage%20%3D%20document.querySelector(%22.ResponsiveImage%22).src%3B%0Arating%20%3D%20document.querySelector(%22.RatingStatistics__rating%22).textContent.trim()%3B%0Ayear%20%3D%20document.querySelector(%22%5Bdata-testid%3DpublicationInfo%5D%22).textContent.slice(-4)%3B%0Alink%20%3D%20location.href%3B%0Aserie%20%3D%20document.querySelector(%22.Text__subdued%22).textContent%3B%0Aauthor%20%3D%20document.querySelector(%22%5Bdata-testid%3Dname%5D%22).textContent%3B%0Atitle%20%3D%20document.querySelector(%22%5Bdata-testid%3DbookTitle%5D%22).textContent%3B%0Ahash%20%3D%20%22title%3D%22%20%2B%20title%20%2B%20%22%2520%22%20%2B%20serie%20%2B%20%22%26author%3D%22%20%2B%20author%20%2B%20%22%26year%3D%22%20%2B%20year%20%2B%20%22%26link%3D%22%20%2B%20link%20%2B%20%22%26rating%3D%22%20%2B%20rating%20%2B%20%22%26image_url%3D%22%20%2B%20image%3B%0Awindow.location%20%3D%20%22https%3A%2F%2Fpetrosh.github.io%2Fsimulibros%2Fadd_book%3Fa%3D%22%20%2B%20btoa(hash)%3B%7D)()%3B
 ```
 
 ### Archive.org Check page
