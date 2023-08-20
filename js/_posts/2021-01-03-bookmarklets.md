@@ -12,6 +12,7 @@ tags: []
 // Pools (all)
 var spans = [...document.querySelectorAll("span")]
 var h2s = [...document.querySelectorAll("h2")]
+
 // Who to follow
 var who = spans.filter(a => a.textContent.includes("Who to follow"))
 who.forEach((a) => {
@@ -21,6 +22,7 @@ who.forEach((a) => {
   var t3 = t2.nextSibling;
   console.log(sign.style.display = 'none', t1.style.display = 'none', t2.style.display = 'none', t3.style.display = 'none');
 })
+
 // Ad
 var ads = spans.filter(a => a.textContent.includes("Ad"))
 ads.forEach(a => console.log(a.closest('article').style.display = 'none'))
@@ -33,23 +35,7 @@ lists.forEach((a) => {
   var t3 = t2.nextSibling
   console.log(disc.style.display = 'none', t1.style.display = 'none', t2.style.display = 'none', t3.style.display = 'none')
 })
-// Show
-var show = spans.filter(a => a.textContent.includes("Show more"))
-show.forEach((a) => {
-  console.log(a.closest('[data-testid="cellInnerDiv"]').style.display = 'none')
-})
-// View all
-var view = spans.filter(a => a.textContent.includes("View all"))
-view.forEach((a) => {
-  console.log(a.closest('[data-testid="cellInnerDiv"]').style.display = 'none')
-})
-// Discover
-var disc = spans.filter(a => a.textContent.includes("Discover more"))
-disc.forEach((a) => {
-  var lui = a.closest('[data-testid="cellInnerDiv"]')
-  var next = lui.nextSibling
-  console.log(lui.remove(), next.style.display = 'none')
-})
+
 // People
 var peo = h2s.filter(a => a.textContent.includes('People'))
 peo.forEach((a) => {
@@ -58,6 +44,36 @@ peo.forEach((a) => {
   var t2 = t1.nextSibling
   var t3 = t2.nextSibling
   console.log(disc.style.display = 'none', t1.style.display = 'none', t2.style.display = 'none', t3.style.display = 'none')
+})
+
+// Creators
+var creo = h2s.filter(a => a.textContent.includes('Creators for you'))
+creo.forEach((a) => {
+  var disc = a.closest('[data-testid="cellInnerDiv"]')
+  var t1 = disc.nextSibling
+  var t2 = t1.nextSibling
+  var t3 = t2.nextSibling
+  console.log(disc.style.display = 'none', t1.style.display = 'none', t2.style.display = 'none', t3.style.display = 'none')
+})
+
+// Show
+var show = spans.filter(a => a.textContent.includes("Show more"))
+show.forEach((a) => {
+  console.log(a.closest('[data-testid="cellInnerDiv"]').style.display = 'none')
+})
+
+// View all
+var view = spans.filter(a => a.textContent.includes("View all"))
+view.forEach((a) => {
+  console.log(a.closest('[data-testid="cellInnerDiv"]').style.display = 'none')
+})
+
+// Discover
+var disc = spans.filter(a => a.textContent.includes("Discover more"))
+disc.forEach((a) => {
+  var lui = a.closest('[data-testid="cellInnerDiv"]')
+  var next = lui.nextSibling
+  console.log(lui.remove(), next.style.display = 'none')
 })
 ```
 
