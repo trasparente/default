@@ -6,6 +6,45 @@ tags: []
 
 > [Bookmarklet Maker](https://caiorss.github.io/bookmarklet-maker/)
 
+### Twitter Ads
+
+```js
+// Who to follow
+var spans = [...document.querySelectorAll("span")]
+var who = spans.filter(a => a.textContent.includes("Who to follow"))
+who.forEach((a) => {
+  var sign = a.closest('[data-testid="cellInnerDiv"]');
+  var t1 = sign.nextSibling;
+  var t2 = t1.nextSibling;
+  var t3 = t2.nextSibling;
+  console.log(sign.remove(), t1.remove(), t2.remove(), t3.remove());
+})
+// Ad
+var ads = spans.filter(a => a.textContent.includes("Ad"))
+ads.forEach(a => console.log(a.closest('article').remove()))
+// Lists
+var lists = spans.filter(a => a.textContent.includes('Discover new Lists'))
+lists.forEach((a) => {
+  var disc = a.closest('[data-testid="cellInnerDiv"]')
+  var t1 = disc.nextSibling
+  var t2 = t1.nextSibling
+  var t3 = t2.nextSibling
+  console.log(disc.remove(), t1.remove(), t2.remove(), t3.remove())
+})
+// Show
+var show = spans.filter(a => a.textContent.includes("Show more"))
+show.forEach((a) => {
+  console.log(a.closest('[data-testid="cellInnerDiv"]').remove())
+})
+// Discover
+var disc = spans.filter(a => a.textContent.includes("Discover more"))
+disc.forEach((a) => {
+  var lui = a.closest('[data-testid="cellInnerDiv"]')
+  var next = lui.nextSibling
+  console.log(lui.remove(), next.remove())
+})
+```
+
 ### PRI New Page New Tab
 
 ```js
