@@ -20,12 +20,16 @@ who.forEach((a) => {
   var t1 = sign.nextSibling;
   var t2 = t1.nextSibling;
   var t3 = t2.nextSibling;
-  console.log(sign.style.display = 'none', t1.style.display = 'none', t2.style.display = 'none', t3.style.display = 'none');
+  if (sign) sign.style.display = 'none';
+  if (t1) t1.style.display = 'none';
+  if (t2) t2.style.display = 'none';
+  if (t3) t3.style.display = 'none';
 })
 
 // Ad
 var ads = spans.filter(a => a.textContent.includes("Ad"))
 ads.forEach(a => console.log(a.closest('article').style.display = 'none'))
+
 // Lists
 var lists = spans.filter(a => a.textContent.includes('Discover new Lists'))
 lists.forEach((a) => {
@@ -33,7 +37,10 @@ lists.forEach((a) => {
   var t1 = disc.nextSibling
   var t2 = t1.nextSibling
   var t3 = t2.nextSibling
-  console.log(disc.style.display = 'none', t1.style.display = 'none', t2.style.display = 'none', t3.style.display = 'none')
+  if (disc) disc.style.display = 'none';
+  if (t1) t1.style.display = 'none';
+  if (t2) t2.style.display = 'none';
+  if (t3) t3.style.display = 'none';
 })
 
 // People
@@ -43,7 +50,10 @@ peo.forEach((a) => {
   var t1 = disc.nextSibling
   var t2 = t1.nextSibling
   var t3 = t2.nextSibling
-  console.log(disc.style.display = 'none', t1.style.display = 'none', t2.style.display = 'none', t3.style.display = 'none')
+  if (disc) disc.style.display = 'none';
+  if (t1) t1.style.display = 'none';
+  if (t2) t2.style.display = 'none';
+  if (t3) t3.style.display = 'none';
 })
 
 // Creators
@@ -53,7 +63,10 @@ creo.forEach((a) => {
   var t1 = disc.nextSibling
   var t2 = t1.nextSibling
   var t3 = t2.nextSibling
-  console.log(disc.style.display = 'none', t1.style.display = 'none', t2.style.display = 'none', t3.style.display = 'none')
+  if (disc) disc.style.display = 'none';
+  if (t1) t1.style.display = 'none';
+  if (t2) t2.style.display = 'none';
+  if (t3) t3.style.display = 'none';
 })
 
 // Show
@@ -73,7 +86,8 @@ var disc = spans.filter(a => a.textContent.includes("Discover more"))
 disc.forEach((a) => {
   var lui = a.closest('[data-testid="cellInnerDiv"]')
   var next = lui.nextSibling
-  console.log(lui.remove(), next.style.display = 'none')
+  if (lui) lui.remove();
+  if (next) next.style.display = 'none';
 })
 ```
 
